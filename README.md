@@ -2,4 +2,4 @@
 
 Learning DataScience with the Stock Market
 
-Microsoft vs Apple
+Testing mirror github -> gitlab
