@@ -2,4 +2,4 @@
 
 Learning DataScience with the Stock Market
 
-Testing mirror github -> gitlab
+Testing mirror github -> gitlab -> github
