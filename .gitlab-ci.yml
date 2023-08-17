@@ -1,0 +1,72 @@
+app:dev:
+    image: ubuntu
+    before_script:
+       - apt-get update && apt-get install sshpass -y 
+       - mkdir ~/.ssh
+       - echo "StrictHostKeyChecking no" >> ~/.ssh/config
+       - sshpass -p $USER_PASS ssh $USER_NAME@$HOST "cd python-gitlab-ci/ && git checkout . &&  git pull"
+    stage: deploy
+    environment: live
+    script:
+       - sshpass -p $USER_PASS ssh $USER_NAME@$HOST "sudo systemctl restart apache2"
+    only:
+       - master
+
+#   image: hub.cloud.justicafacil.com.br/jf_builder
+
+# stages:
+#   - test
+#   - build-image
+#   - deploy
+
+# before_script:
+#   - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+#   - eval $(ssh-agent -s)
+#   - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+#   - mkdir -p ~/.ssh
+#   - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+
+# test:
+#   stage: test
+#   script:
+#     - pip3 install tox
+#     - tox -e coverage
+#     - rm -rf .tox
+#   except:
+#     - homologacao
+
+# build-image:homologacao:
+#   stage: build-image
+#   only:
+#     - homologacao
+#   environment:
+#     name: homologacao
+#   script:
+#     - make build-image-homologacao
+
+# build-image:producao:
+#   stage: build-image
+#   only:
+#     - master
+#   environment:
+#     name: producao
+#   script:
+#     - make build-image-producao
+
+# deploy:homologacao:
+#   stage: deploy
+#   only:
+#     - homologacao
+#   environment:
+#     name: homologacao
+#   script:
+#     - make deploy-homologacao
+
+# deploy:producao:
+#   stage: deploy
+#   only:
+#     - master
+#   environment:
+#     name: producao
+#   script:
+#     - make deploy-producao
