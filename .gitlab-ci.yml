@@ -11,4 +11,4 @@ before_script:
 build:
   stage: build
   script: 
-    - bash stock_market/hello.sh
+    - bash https://gitlab.com/annealmd/stock_market/hello.sh
