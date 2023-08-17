@@ -2,4 +2,4 @@
 
 Learning DataScience with the Stock Market
 
-Testing mirror and hooks
+Testing mirror and hooks no gitlab
