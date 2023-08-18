@@ -6,9 +6,9 @@ stages:
   - build
 
 before_script:
-  - git clone https://gitlab.com/annealmd/stock_market
+  - git clone https://github.com/annealmd/stock_market
 
 build:
   stage: build
-  script: 
+  script:
     - bash https://gitlab.com/annealmd/stock_market/hello.sh
