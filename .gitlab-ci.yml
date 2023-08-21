@@ -11,4 +11,3 @@ before_script:
 build:
   stage: build
   script:
-    - bash ./hello.sh
