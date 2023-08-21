@@ -10,4 +10,5 @@ before_script:
 
 build:
   stage: build
-  script: echo "Hello, Rules!"
+  script:
+    - echo "Hello, Rules!"
